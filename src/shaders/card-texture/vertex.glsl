@@ -4,7 +4,7 @@ uniform float uTime;
 attribute vec4 tangent;
 
 float getWobble(vec3 position){
-    return snoise(vec4(position.xyz, uTime)) * 3.0;
+    return snoise(vec4(position.xyz, uTime)) * 0.2;
 }
 
 void main () {

@@ -1,9 +1,40 @@
 #root {
-  max-width: 1920px;
+  width: 100%;
   margin: 0 auto;
+
 }
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+.app{
+  padding: 0 var(--space-xl);
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+.app::after{
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: black;
+    bottom: 0;
+    left: var(--space-xl);
+    opacity: 10%;
+  }
+  .app::before{
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: black;
+    bottom: 0;
+    right: var(--space-xl);
+    opacity: 10%;
+}
+.projects{
+  min-height: 100vh;
+  background-color: white;
 }

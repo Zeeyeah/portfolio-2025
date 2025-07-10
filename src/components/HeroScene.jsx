@@ -24,6 +24,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const [dragged, drag] = useState(false)
   const [hovered, hover] = useState(false)
 
+
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
   useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
   useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
@@ -61,7 +62,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
       ang.copy(card.current.angvel())
       rot.copy(card.current.rotation())
       card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z })
-    }
+    }   
   })
 
   curve.curveType = 'chordal'
@@ -69,7 +70,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 
   return (
     <>
-    <Perf position="top-left" />
+    <Perf position="top-right" />
       <group position={[0, 4, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
@@ -91,11 +92,11 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
             onPointerUp={(e) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
             onPointerDown={(e) => (e.target.setPointerCapture(e.pointerId), drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation()))))}>
             <mesh geometry={nodes.card.geometry}>
-              <meshPhysicalMaterial map={materials.base.map} map-anisotropy={16} clearcoat={1} clearcoatRoughness={0.15} metalness={0.5}>
-                {/* <RenderTexture attach={'map'}  >
-                    <PerspectiveCamera makeDefault manual aspect={1 / 1} position={[1, 0, 5]} />
+              <meshPhysicalMaterial map={materials.base.map} map-anisotropy={16} clearcoat={1} clearcoatRoughness={0.15} roughness={0.3} metalness={0.5}>
+                <RenderTexture attach={'map'}  >
+                    <PerspectiveCamera makeDefault manual aspect={1 / 1} position={[1.12, 0.5, 5]} />
                     <CardTexture />
-                </RenderTexture> */}
+                </RenderTexture>
               </meshPhysicalMaterial>
             </mesh>
             <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
@@ -105,7 +106,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
       </group>
       <mesh ref={band}>
         <meshLineGeometry />
-        <meshLineMaterial color="black" depthWrite={false} depthTest={false}    sizeAttenuation repeat={[-3, 1]} lineWidth={2}  />
+        <meshLineMaterial color="black" depthWrite={false} depthTest={false} sizeAttenuation repeat={[-3, 1]} lineWidth={1}  />
       </mesh>
         <Environment  blur={0.75}>
               <color attach="background" args={['gray']} />

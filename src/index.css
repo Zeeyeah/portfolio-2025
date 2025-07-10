@@ -1,0 +1,47 @@
+:root {
+  /* Base spacing scale */
+  --space-xs: calc(0.25rem + 0.25vw);
+  --space-sm: calc(0.5rem + 0.5vw);
+  --space-md: calc(1rem + 1vw);
+  --space-lg: calc(2rem + 2vw);
+  --space-xl: calc(3rem + 3vw);
+
+  /* Font sizes for TV UI */
+  --font-xs: calc(0.75rem + 0.5vw);
+  --font-sm: calc(1rem + 0.8vw);
+  --font-md: calc(1.25rem + 1.2vw);
+  --font-lg: calc(1.5rem + 2vw);
+  --font-xl: calc(2rem + 3vw);
+}
+
+h1{
+    font-size: var(--font-xl);
+    font-family: 'Helvetica';
+    margin: var(--space-sm) 0;
+}
+p{
+    font-family: 'Helvetica';
+    font-size: var(--font-xs);
+    opacity: 70%;
+    letter-spacing: 2%;
+    line-height: 102%;
+    padding: 0 5px;
+}
+h2{
+    font-size: var(--font-lg);
+    font-family: 'Helvetica';
+}
+h4{
+    font-size: var(--font-sm);
+    font-family: 'Helvetica';
+}
+h5{
+    font-size: var(--font-xs);
+    font-family: 'Helvetica';
+    font-weight: 600;
+}
+a{
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 600;
+}
