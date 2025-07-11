@@ -9,7 +9,6 @@ import { useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
 import Projects from './sections/Projects'
 import About from './sections/About'
-import { Analytics } from "@vercel/analytics/next"
 function App() {
 
   return (
@@ -18,7 +17,6 @@ function App() {
       <HeroSection />
       <Projects />
       <About />
-      <Analytics />
     </div>
   );
 }
