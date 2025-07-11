@@ -1,4 +1,4 @@
-import { View } from '@react-three/drei'
+import { OrbitControls, View } from '@react-three/drei'
 import React from 'react'
 import ProjectImage from '../components/ProjectImage'
 import { Canvas } from '@react-three/fiber'
@@ -70,6 +70,7 @@ const Projects = () => {
         }}
         eventSource={document.getElementById("root")}
       >
+        <OrbitControls enabled={false} />
         <View.Port />
       </Canvas>
       {/* <PortfolioGrid /> */}

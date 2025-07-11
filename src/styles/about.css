@@ -1,0 +1,113 @@
+.about  h1 {
+    position: relative;
+}
+.about  h1::after{
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 1px;
+    background-color: black;
+    top: 0;
+    left: -10%;
+    opacity: 0.1;
+  }
+  .about  h1::before{
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 1px;
+    background-color: black;
+    bottom: 0;
+    left: -10%;
+    opacity: 0.1;
+}
+.about-me{
+    display: grid;
+    grid-template-columns: calc(var(--space-lg) * 1.5 ) 2fr 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg) var(--space-md);
+}
+.about-me h2{
+    margin-bottom: var(--space-sm);
+}
+.about-me-info p {
+    font-weight: 300;
+}
+.profile-pic{
+    width: calc(var(--space-lg) * 1.5 );
+    height: calc(var(--space-lg) * 1.5 );
+    border-radius: 50%;
+    margin-right: var(--space-lg);
+    background-image: url('/profile.jpg');
+    background-size: contain;
+    background-size: 120%;
+    background-position: 60% 0%;
+}
+.profile-pic img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 0%;
+}
+.skills{
+    /* display: flex;
+    flex-wrap: wrap;*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.skill{
+
+    display: flex;
+
+    margin: var(--space-xs) var(--space-sm);
+    text-align: start;
+}
+.contact{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: var(--space-sm);
+}
+.contact ul {
+    display: flex;
+    gap: var(--space-sm);
+}
+.contact a {
+    font-weight: 300;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.contact li {
+    display: flex;
+    align-items: end;
+}
+.contact li svg{
+    width: 12px;
+    height: 12px;
+    stroke-width: 3px;
+}
+
+@media (max-width: 768px) {
+  .contact{
+    flex-direction: column;
+    align-items: start;
+  }
+  .about-me{
+    grid-template-columns: 1fr;
+  }
+    .contact ul {
+        flex-wrap: wrap;
+        gap: var(--space-xs);
+    }
+    .contact li svg{
+    width: 8px;
+    height: 8px;
+    stroke-width: 1px;
+}
+    .contact li {
+        font-size: var(--space-sm);
+    }
+}

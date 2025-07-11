@@ -34,7 +34,14 @@
     right: var(--space-xl);
     opacity: 10%;
 }
-.projects{
-  min-height: 100vh;
-  background-color: white;
+@media screen and (max-width: 768px) {
+    .app{
+      padding: 0 var(--space-md);
+    }
+    .app::after{
+      left: var(--space-md);
+    }
+    .app::before{
+      right: var(--space-md);
+    }
 }

@@ -64,8 +64,18 @@
 .project-link {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin-bottom: var(--space-sm);
+}
+.project-link a{
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-xs);
+}
+.project-link svg{
+  width: var(--font-xs);
+  height: var(--font-xs);
+  stroke-width: 3px;
 }
 .project-columns {
   display: flex;
@@ -106,4 +116,7 @@
   .right-column {
     padding-top: 0;
   }
+  .project{
+  min-width: 300px;
+}
 }

@@ -8,6 +8,7 @@ import ProjectImage from './components/ProjectImage'
 import { useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
 import Projects from './sections/Projects'
+import About from './sections/About'
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
       <ReactLenis  root />
       <HeroSection />
       <Projects />
+      <About />
     </div>
   );
 }
