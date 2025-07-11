@@ -35,7 +35,7 @@ const About = () => {
         <h4>GET IN TOUCH.</h4>
         <ul>
           <li>
-            <a target='_blank' href="mailto:zu0827992@gmail.com">Resume</a>
+            <a target='_blank' href="https://drive.google.com/file/d/1bqW0mAFiYF_5YBeXIKTrvs8U72e97u_6/view?usp=sharing">Resume</a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="65"
