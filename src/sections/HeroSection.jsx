@@ -116,7 +116,7 @@ const HeroSection = () => {
             <div className='hero-info'>
             <p>Front-end Developer from India crafting interactive, 3D, and creative web experiences.</p>
             <p>Specializing in React, Three.js, and WebGL.</p>
-            <p>Interactive. Creative. 3D. Performance.</p>
+            <p>Winner of Google Maps Hackathon 2025.</p>
             </div>
             <button>Get In Touch</button>
         </div>
