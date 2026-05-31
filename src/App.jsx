@@ -9,14 +9,17 @@ import { useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
 import Projects from './sections/Projects'
 import About from './sections/About'
+import ElectricPole, { ElectricPoleScene } from './components/ElectricPole'
+import { Physics } from '@react-three/rapier'
 function App() {
 
   return (
     <div className='app'>
-      <ReactLenis  root />
+      {/* <ReactLenis  root />
       <HeroSection />
       <Projects />
-      <About />
+      <About /> */}
+      <ElectricPoleScene />
     </div>
   );
 }

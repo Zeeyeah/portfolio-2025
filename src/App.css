@@ -9,39 +9,7 @@
   padding: 0;
 }
 .app{
-  padding: 0 var(--space-xl);
   width: 100%;
   overflow-x: hidden;
   position: relative;
-}
-.app::after{
-    content: '';
-    position: absolute;
-    width: 1px;
-    height: 100%;
-    background-color: black;
-    bottom: 0;
-    left: var(--space-xl);
-    opacity: 10%;
-  }
-  .app::before{
-    content: '';
-    position: absolute;
-    width: 1px;
-    height: 100%;
-    background-color: black;
-    bottom: 0;
-    right: var(--space-xl);
-    opacity: 10%;
-}
-@media screen and (max-width: 768px) {
-    .app{
-      padding: 0 var(--space-md);
-    }
-    .app::after{
-      left: var(--space-md);
-    }
-    .app::before{
-      right: var(--space-md);
-    }
 }
