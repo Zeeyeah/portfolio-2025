@@ -51,7 +51,7 @@ const WIRE_ROWS = [
 // Where the far fixed anchors live in world space
 const ANCHOR_X = 4.0;
 const ANCHOR_Z = 5.5;
-const ANCHOR_Y_BASE = 2.5; // world Y of top row anchor
+const ANCHOR_Y_BASE = 2; // world Y of top row anchor
 
 const WIRE_COLORS = ["#000000", "#000000", "#000000", "#000000"];
 
@@ -119,7 +119,6 @@ function PhysicsWire({ startRef, endRef, startPos, endPos, color }) {
           typeof window !== "undefined" ? window.innerWidth : 1920,
           typeof window !== "undefined" ? window.innerHeight : 1080
         ),
-        depthTest: false
       }),
     [color]
   );
@@ -172,12 +171,12 @@ function WireRow({ poleRef, rowY, poleStartPos, color, rowIndex }) {
   const leftEndRef     = useRef();
 
   // Local offset from pole center where this row's wire attaches
-  const rightOffset = [ 0.05, rowY, 0];
-  const leftOffset  = [-0.05, rowY, 0];
+  const rightOffset = [ 0.02, rowY, 0];
+  const leftOffset  = [-0.02, rowY, 0];
 
   // World start positions (pole starts at origin, so same as local initially)
-  const rightStartPos = [poleStartPos[0] + 0.05, poleStartPos[1] + rowY, poleStartPos[2]];
-  const leftStartPos  = [poleStartPos[0] - 0.05, poleStartPos[1] + rowY, poleStartPos[2]];
+  const rightStartPos = [poleStartPos[0] + 0.02, poleStartPos[1] + rowY, poleStartPos[2]];
+  const leftStartPos  = [poleStartPos[0] - 0.02, poleStartPos[1] + rowY, poleStartPos[2]];
 
   // Far anchor world positions
   const anchorY = ANCHOR_Y_BASE - rowIndex * 0.5;
@@ -293,7 +292,7 @@ function ElectricPole() {
           onPointerCancel={onPointerUp}
         >
           <planeGeometry args={[POLE_W, POLE_H]} />
-          <meshBasicMaterial  map={texture} side={THREE.DoubleSide} />
+          <meshBasicMaterial map={texture} side={THREE.DoubleSide} />
         </mesh>
       </RigidBody>
 
@@ -339,8 +338,6 @@ export function ElectricPoleScene() {
         <Physics gravity={[0, -9.81, 0]} timeStep={1 / 60}>
           <ElectricPole />
         </Physics>
-
-        <Environment preset="night" />
       </Canvas>
     </div>
   );
