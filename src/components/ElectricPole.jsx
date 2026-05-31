@@ -27,16 +27,18 @@ const SEG_LEN  = 0.95;
 
 const WIRE_ROWS = [
   { y: -0.4  },
-  { y: -0.7  },
+  { y: -0.45  },
+  { y: -0.9  },
+  { y: -0.95  },
   { y: -1.3  },
-  { y: -1.5  },
+  { y: -1.35  },
 ];
 
 const ANCHOR_X      = 4.0;
 const ANCHOR_Z      = 5.5;
-const ANCHOR_Y_BASE = 2;
+const ANCHOR_Y_BASE = -0.5;
 
-const WIRE_COLORS = ["#000000", "#000000", "#000000", "#000000"];
+const WIRE_COLORS = ["#000000", "#000000", "#000000", "#000000", "#000000", "#000000"];
 
 const SEG_PROPS = {
   canSleep: false,
@@ -163,7 +165,7 @@ function WireRow({ poleRef, rowY, color, rowIndex }) {
   const rightStartWorld = [ 0.02, rowY, 0];
   const leftStartWorld  = [-0.02, rowY, 0];
 
-  const anchorY     = ANCHOR_Y_BASE - rowIndex * 0.5;
+  const anchorY     = ANCHOR_Y_BASE - rowIndex * 0.2;
   const rightEndPos = [ ANCHOR_X, anchorY, ANCHOR_Z];
   const leftEndPos  = [-ANCHOR_X, anchorY, ANCHOR_Z];
 
