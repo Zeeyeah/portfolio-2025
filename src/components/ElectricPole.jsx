@@ -27,18 +27,16 @@ const SEG_LEN  = 0.95;
 
 const WIRE_ROWS = [
   { y: -0.4  },
-  { y: -0.45  },
-  { y: -0.9  },
-  { y: -0.95  },
+  { y: -0.7  },
   { y: -1.3  },
-  { y: -1.35  },
+  { y: -1.5  },
 ];
 
 const ANCHOR_X      = 4.0;
 const ANCHOR_Z      = 5.5;
-const ANCHOR_Y_BASE = -0.5;
+const ANCHOR_Y_BASE = 1;
 
-const WIRE_COLORS = ["#000000", "#000000", "#000000", "#000000", "#000000", "#000000"];
+const WIRE_COLORS = ["#000000", "#000000", "#000000", "#000000"];
 
 const SEG_PROPS = {
   canSleep: false,
@@ -87,7 +85,7 @@ function PhysicsWire({ poleRef, poleAnchorLocal, endRef, startWorldPos, endPos, 
     () =>
       new MeshLineMaterial({
         color: new THREE.Color(color),
-        lineWidth: 0.009,
+        lineWidth: 0.008,
         resolution: new THREE.Vector2(
           typeof window !== "undefined" ? window.innerWidth : 1920,
           typeof window !== "undefined" ? window.innerHeight : 1080
@@ -154,20 +152,25 @@ function PhysicsWire({ poleRef, poleAnchorLocal, endRef, startWorldPos, endPos, 
 // ─── WireRow ──────────────────────────────────────────────────────────────────
 
 function WireRow({ poleRef, rowY, color, rowIndex }) {
-  const rightEndRef = useRef();
-  const leftEndRef  = useRef();
+  const rightEndRef  = useRef();
+  const leftEndRef   = useRef();
+  const centerEndRef = useRef();
 
-  // Local offsets on the pole (your original 0.02 spread)
-  const rightLocal = [ 0.02, rowY, 0];
-  const leftLocal  = [-0.02, rowY, 0];
+  // Local offsets on the pole
+  const rightLocal  = [ 0.02, rowY, 0];
+  const leftLocal   = [-0.02, rowY, 0];
+  const centerLocal = [ 0.0,    rowY, 0];
 
   // World start positions (pole spawns at origin)
-  const rightStartWorld = [ 0.02, rowY, 0];
-  const leftStartWorld  = [-0.02, rowY, 0];
+  const rightStartWorld  = [ 0.02, rowY, 0];
+  const leftStartWorld   = [-0.02, rowY, 0];
+  const centerStartWorld = [ 0.0,    rowY, 0];
 
-  const anchorY     = ANCHOR_Y_BASE - rowIndex * 0.2;
-  const rightEndPos = [ ANCHOR_X, anchorY, ANCHOR_Z];
-  const leftEndPos  = [-ANCHOR_X, anchorY, ANCHOR_Z];
+  const anchorY      = ANCHOR_Y_BASE - rowIndex * 0.2;
+  const rightEndPos  = [ ANCHOR_X,  anchorY,        ANCHOR_Z];
+  const leftEndPos   = [-ANCHOR_X,  (anchorY * 2.5),        ANCHOR_Z];
+  // Third anchor: center X, straight down to -ANCHOR_Y_BASE
+  const centerEndPos = [ ANCHOR_X,        -(ANCHOR_Y_BASE * 2.5),  ANCHOR_Z];
 
   return (
     <>
@@ -175,6 +178,9 @@ function WireRow({ poleRef, rowY, color, rowIndex }) {
         <BallCollider args={[0.08]} />
       </RigidBody>
       <RigidBody ref={leftEndRef} type="fixed" position={leftEndPos} colliders={false}>
+        <BallCollider args={[0.08]} />
+      </RigidBody>
+      <RigidBody ref={centerEndRef} type="fixed" position={centerEndPos} colliders={false}>
         <BallCollider args={[0.08]} />
       </RigidBody>
 
@@ -192,6 +198,14 @@ function WireRow({ poleRef, rowY, color, rowIndex }) {
         endRef={leftEndRef}
         startWorldPos={leftStartWorld}
         endPos={leftEndPos}
+        color={color}
+      />
+      <PhysicsWire
+        poleRef={poleRef}
+        poleAnchorLocal={centerLocal}
+        endRef={centerEndRef}
+        startWorldPos={centerStartWorld}
+        endPos={centerEndPos}
         color={color}
       />
     </>
